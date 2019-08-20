@@ -10,15 +10,33 @@ describe "releasing bike" do
   end
 end
 
-describe "exceeding capacity" do
+
+describe "holding capacity of 20" do
   it "raises" do
     t = Docking_Station.new
-    b = Bike.new
     c = Bike.new
-    b.docking(t)
+    z = $DEFAULT_CAPACITY -1
+    z.times {
+      b = Bike.new
+      b.docking(t)
+    }
+    expect {c.docking(t)}.not_to raise_error
+  end
+end
+
+describe "exceeding capacity of 20" do
+  it "raises" do
+    t = Docking_Station.new
+    c = Bike.new
+    $DEFAULT_CAPACITY.times {
+      b = Bike.new
+      b.docking(t)
+    }
     expect {c.docking(t)}.to raise_error
   end
 end
+
+
 
 
 
