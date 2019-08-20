@@ -47,5 +47,23 @@ describe Bike do
  it { is_expected.to respond_to(:working?) }
  it { is_expected.to respond_to(:docking) }
  it {is_expected.to respond_to(:docking).with(1).argument }
+ it {is_expected.to respond_to(:report_broken)}
+end
 
+describe "report bike as broken" do
+  it "raises" do
+    c = Bike.new
+    c.report_broken
+    expect(c.functional).to be false
+  end
+end
+
+describe "release broken bike" do
+  it "raises" do
+    t = Docking_Station.new
+    c = Bike.new
+    c.report_broken
+    c.docking(t)
+    expect {t.release_bike}.to raise_error
+  end
 end

@@ -9,7 +9,7 @@ $DEFAULT_CAPACITY = 20
     $LIMIT = cap
   end
   def release_bike
-    if empty? then
+    if empty? or @store[1].functional == false then #this is fudged - assumes only one bike is stored
       fail
     else
       t = @store
@@ -30,18 +30,25 @@ end
 
 
 class Bike
-  # attr_accessor :location
-  # def initialize(location)
-  #    @location = location
-  # end
-  def working?
-    return true
+  attr_accessor :functional
+
+  def initialize
+    functional = true
+    @functional = functional
   end
+  def working?
+    return @functional
+  end
+
   def docking(station)
     if station.store.length < $LIMIT then
       station.store << self
     else fail
     end
+  end
+
+  def report_broken
+    @functional = false
   end
 
 end
