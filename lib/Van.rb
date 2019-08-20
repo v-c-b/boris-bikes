@@ -1,4 +1,7 @@
+require "Module.rb"
+
 class Van
+  include Mix_in
   $DEFAULT_CAPACITY_VAN = 5
   attr_accessor :store
   def initialize(cap = $DEFAULT_CAPACITY)
@@ -28,11 +31,6 @@ def docking(location)
   end
   @store = []
 end
-
-def storage
-  return @store
-end
-
 
 private
 def empty?

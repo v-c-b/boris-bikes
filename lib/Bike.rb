@@ -1,4 +1,7 @@
+require "Module.rb"
+
 class Bike
+  include Mix_in
   attr_accessor :functional
 
   def initialize

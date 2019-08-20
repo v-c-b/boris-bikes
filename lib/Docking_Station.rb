@@ -1,5 +1,7 @@
+require "Module.rb"
 
 class Docking_Station
+  include Mix_in
 $DEFAULT_CAPACITY = 20
   attr_accessor :store
   def initialize(cap = $DEFAULT_CAPACITY)
@@ -21,12 +23,6 @@ $DEFAULT_CAPACITY = 20
   def collect(bike)
     @store << bike
   end
-
-  def storage
-    return @store
-  end
-
-
 
 private
 def empty?
