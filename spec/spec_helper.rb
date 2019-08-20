@@ -36,9 +36,12 @@ describe "exceeding capacity of 20" do
   end
 end
 
-
-
-
+describe "set capacity for a new docking station" do
+  it "raises" do
+    z = 10
+    expect {Docking_Station.new(z)}.not_to raise_error
+  end
+end
 
 describe Bike do
  it { is_expected.to respond_to(:working?) }
