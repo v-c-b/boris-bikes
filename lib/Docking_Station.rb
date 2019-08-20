@@ -17,6 +17,17 @@ $DEFAULT_CAPACITY = 20
       t
     end
   end
+
+  def collect(bike)
+    @store << bike
+  end
+
+  def storage
+    return @store
+  end
+
+
+
 private
 def empty?
   if @store == [] then
