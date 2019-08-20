@@ -67,3 +67,10 @@ describe "release broken bike" do
     expect {t.release_bike}.to raise_error
   end
 end
+
+describe "report bike as broken - isolated" do
+  it "raises" do
+    c = double(:functional => false) # setting c as a double which responds false to functional method
+    expect(c.functional).to be false
+  end
+end
